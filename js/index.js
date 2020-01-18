@@ -18,7 +18,13 @@ allImages.forEach(image => {
         event.target.style.border = "inset springgreen 3px";
     });
     image.addEventListener('dblclick', (event) => {
-        event.target.style.border = "none";
+        event.target.style.visibility = "hidden";
+    });
+    image.addEventListener('dragstart', (event) => {
+        event.target.style.border = "outset red 5px";
+    });
+    image.addEventListener('dragend', (event) => {
+        event.target.style.border = "";
     });
 });
 
@@ -47,4 +53,28 @@ h1.addEventListener('mouseup', (event) => {
     h1.style.border = "none";
 });
 
-const h2 = document.querySelectorAll('h2');
+const allP = document.querySelectorAll('p');
+allP.forEach(p => {
+    p.addEventListener('copy', (event) => {
+        alert("No copying!");
+    });
+    p.addEventListener('dblclick', (event) => {
+        p.style.color = "springgreen";
+        event.stopPropagation();
+    });
+});
+
+const allSect = document.querySelectorAll('.content-section');
+allSect.forEach(sect => {
+    sect.addEventListener('dblclick', (event) => {
+        sect.style.color = "springgreen";
+    });
+});
+
+const allNav = document.querySelectorAll('.nav-link');
+allNav.forEach(nav => {
+    nav.addEventListener('click', (event) => {
+        event.preventDefault();
+    });
+});
+
